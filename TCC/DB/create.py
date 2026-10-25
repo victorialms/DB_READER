@@ -1,12 +1,16 @@
+import os
 import mysql.connector
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def conectar(banco=None):
     """Estabelece a conexão com o MySQL. 
     Aceita o nome do banco como opcional para permitir a criação dele."""
     config = {
-        "host": "localhost",
-        "user": "app",
-        "password": "1234"
+        "host": os.getenv("DB_HOST"),
+        "user": os.getenv("DB_USER"),
+        "password": os.getenv("DB_PASSWORD")
     }
     
     # adiciona nas configurações do banco
